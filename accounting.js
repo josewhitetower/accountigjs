@@ -218,6 +218,14 @@
     return (Math.round(lib.unformat(value) * power) / power).toFixed(precision);
   });
 
+  function betterToFixed(value, precision) {
+    var exponentialForm = Number(value + 'e' + precision);
+    var rounded = Math.round(exponentialForm);
+    var finalResult = Number(rounded + 'e-' + precision);
+    return finalResult.toFixed(precision);
+
+  }
+
   /**
    * Format a number, with comma-separated thousands and custom precision/decimal places
    * Alias: `accounting.format()`
